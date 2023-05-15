@@ -5,10 +5,10 @@ import Footwear from "./Footwear.js";
 const API = process.env.REACT_APP_API_URL;
 
 function Footwears() {
-  const [footwares, setFootwares] = useState([]);
+  const [footwears, setFootwears] = useState([]);
   useEffect(() => {
-    axios.get(`${API}/footwares`).then((response) => {
-      setFootwares(response.data)
+    axios.get(`${API}/footwears`).then((response) => {
+      setFootwears(response.data)
     }).catch((e)=> {
       console.warn("catch", e)
     })
@@ -17,8 +17,8 @@ function Footwears() {
     <div className="Bookmarks">
       <section>
        <div className="footware-content">
-            {footwares.map((footware) => {
-              return <Footwear key={footware.id} footware={footware} />;
+            {footwears.map((footwear) => {
+              return <Footwear key={footwear.id} footwear={footwear} />;
             })}
           </div>
       </section>

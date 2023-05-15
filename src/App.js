@@ -19,10 +19,10 @@ function App(){
       <div className="container">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/AboutUs" element={<About />} />
-          <Route path="/footwares/new" element={<New />} />
-          <Route path="/footwares/:id" element={<Show />} />
-          <Route path="/footwares/:id/edit" element={<Edit />} />
+          <Route path="/About" element={<About />} />
+          <Route path="/footwears/new" element={<New />} />
+          <Route path="/footwears/:id" element={<Show />} />
+          <Route path="/footwears/:id/edit" element={<Edit />} />
           <Route path="*" element={<FourOFour />} />
         </Routes>
       </div>

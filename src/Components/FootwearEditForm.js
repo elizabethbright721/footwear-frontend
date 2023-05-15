@@ -8,7 +8,7 @@ function FootwearEditForm() {
   let { id } = useParams();
   let navigate = useNavigate();
 
-  const [footware, setFootware] = useState({
+  const [footwear, setFootwear] = useState({
     name: "",
     cost: "",
     url: "",
@@ -17,12 +17,12 @@ function FootwearEditForm() {
     is_trending: false,
   });
 
-  const updateFootware = (updatedFootware) => {
+  const updateFootwear = (updatedFootwear) => {
     axios
-      .put(`${API}/footwares/${id}`, updatedFootware)
+      .put(`${API}/footwears/${id}`, updatedFootwear)
       .then(
         () => {
-          navigate(`/footwares/${id}`);
+          navigate(`/footwears/${id}`);
         },
         (error) => console.error(error)
       )
@@ -30,36 +30,36 @@ function FootwearEditForm() {
   };
 
   const handleTextChange = (event) => {
-    setFootware({ ...footware, [event.target.id]: event.target.value });
+    setFootwear({ ...footwear, [event.target.id]: event.target.value });
   };
 
   const handleCheckboxChange = () => {
-    setFootware({ ...footware, is_trending: !footware.is_trending });
+    setFootwear({ ...footwear, is_trending: !footwear.is_trending });
   };
 
   useEffect(() => {
-    axios.get(`${API}/footwares/${id}`).then(
-      (response) => setFootware(response.data),
+    axios.get(`${API}/footwears/${id}`).then(
+      (response) => setFootwear(response.data),
       (error) => navigate(`/not-found`)
     );
   }, [id, navigate]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    updateFootware(footware, id);
+    updateFootwear(footwear, id);
   };
   return (
     <div className="New">
-      <div><img src={footware.image} /></div>
+      <div><img src={footwear.image} /></div>
       
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">Name:</label>
         <input
           id="name"
-          value={footware.name}
+          value={footwear.name}
           type="text"
           onChange={handleTextChange}
-          placeholder="Name of Footware"
+          placeholder="Name of Footwear"
           required
         />
            <label htmlFor="cost">Cost:</label>
@@ -68,7 +68,7 @@ function FootwearEditForm() {
           type="number"
           required
           min="0"
-          value={footware.cost}
+          value={footwear.cost}
           onChange={handleTextChange}
         />
         <label htmlFor="url">URL:</label>
@@ -77,7 +77,7 @@ function FootwearEditForm() {
           type="text"
           pattern="http[s]*://.+"
           required
-          value={footware.url}
+          value={footwear.url}
           placeholder="https://"
           onChange={handleTextChange}
         />
@@ -86,7 +86,7 @@ function FootwearEditForm() {
           id="category"
           type="text"
           name="category"
-          value={footware.category}
+          value={footwear.category}
           placeholder="sneaker, heel, sandal, ..."
           onChange={handleTextChange}
         />
@@ -96,7 +96,7 @@ function FootwearEditForm() {
           type="text"
           pattern="http[s]*://.+"
           required
-          value={footware.image}
+          value={footwear.image}
           placeholder="https://"
           onChange={handleTextChange}
         />
@@ -105,14 +105,14 @@ function FootwearEditForm() {
           id="is_trending"
           type="checkbox"
           onChange={handleCheckboxChange}
-          checked={footware.is_trending}
+          checked={footwear.is_trending}
         />
 
         <br />
 
         <input type="submit" />
       </form>
-      <Link to={`/footwares/${id}`}>
+      <Link to={`/footwears/${id}`}>
         <button>Go back!</button>
       </Link>
     </div>

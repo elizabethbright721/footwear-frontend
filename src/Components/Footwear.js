@@ -1,22 +1,22 @@
 import { Link } from "react-router-dom";
 
-function Footware({footware}) {
+function Footware({footwear}) {
 
   
   return (
-    <div className="footware-details">
-     <Link className="decor" to={`/footwares/${footware.id}`}>
+    <div className="footwear-details">
+     <Link className="decor" to={`/footwears/${footwear.id}`}>
      <p>
-        {footware.is_trending ? (
+        {footwear.is_trending ? (
           <span className="badge">Trending🔥</span>
         ) : (
           <span>&nbsp; &nbsp; &nbsp;</span>
         )}
       </p>
-      <img src={footware.image} />
-      <p>{footware.name}</p>
+      <img src={footwear.image} />
+      <p>{footwear.name}</p>
       
-      <p className="bold">${footware.cost}</p>
+      <p className="bold">${footwear.cost}</p>
       
       </Link>
     </div>

@@ -4,22 +4,22 @@ import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
 const API = process.env.REACT_APP_API_URL;
 
-function FootwareNewForm() {
+function FootwearNewForm() {
   let navigate = useNavigate();
 
-  const addFootware = (newFootware) => {
+  const addFootwear = (newFootwear) => {
     axios
-      .post(`${API}/footwares`, newFootware)
+      .post(`${API}/footwears`, newFootwear)
       .then(
         (result) => {
-          navigate(`/footwares/${result.data.id}`);
+          navigate(`/footwears/${result.data.id}`);
         },
         (error) => console.error(error)
       )
       .catch((c) => console.warn("catch", c));
   };
 
-  const [footware, setFootware] = useState({
+  const [footwear, setFootwear] = useState({
     name: "",
     cost: "",
     url: "",
@@ -28,16 +28,16 @@ function FootwareNewForm() {
   });
 
   const handleTextChange = (event) => {
-    setFootware({ ...footware, [event.target.id]: event.target.value });
+    setFootwear({ ...footwear, [event.target.id]: event.target.value });
   };
 
   const handleCheckboxChange = () => {
-    setFootware({ ...footware, is_trending: !footware.is_trending });
+    setFootwear({ ...footwear, is_trending: !footwear.is_trending });
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    addFootware(footware);
+    addFootwear(footwear);
   };
 
 
@@ -47,10 +47,10 @@ return (
         <label htmlFor="name">Name:</label>
         <input
           id="name"
-          value={footware.name}
+          value={footwear.name}
           type="text"
           onChange={handleTextChange}
-          placeholder="Name of Footware"
+          placeholder="Name of Footwear"
           required
         />
          <label htmlFor="cost">Cost:</label>
@@ -59,7 +59,7 @@ return (
           type="number"
           required
           min="0"
-          value={footware.cost}
+          value={footwear.cost}
           onChange={handleTextChange}
         />
         <label htmlFor="url">URL:</label>
@@ -68,7 +68,7 @@ return (
           type="text"
           pattern="http[s]*://.+"
           required
-          value={footware.url}
+          value={footwear.url}
           placeholder="https://"
           onChange={handleTextChange}
         />
@@ -77,7 +77,7 @@ return (
           id="category"
           type="text"
           name="category"
-          value={footware.category}
+          value={footwear.category}
           placeholder="sneaker, heel, sandal, ..."
           onChange={handleTextChange}
         />
@@ -86,7 +86,7 @@ return (
           id="image"
           type="text"
           name="image"
-          value={footware.image}
+          value={footwear.image}
           placeholder="https://"
           pattern="http[s]*://.+"
           required
@@ -97,7 +97,7 @@ return (
           id="is_trending"
           type="checkbox"
           onChange={handleCheckboxChange}
-          checked={footware.is_trending}
+          checked={footwear.is_trending}
         />
 
         <br />
@@ -111,4 +111,4 @@ return (
   );
 }
 
-export default FootwareNewForm;
+export default FootwearNewForm;
